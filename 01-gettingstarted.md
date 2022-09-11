@@ -21,9 +21,13 @@ Upon completion of this lab, you will be able to:
 •	Debug and troubleshoot issues in your service 
 
 ## Create a 3 node cluster
+To setup the k8s cluster execute the following in the terminal.
+
 ```bash
 /home/developer/tools/cluster/cluster_setup.sh
 ```
+
+This sets up a 3 node cluster with metallb as the k8s load-balancer controller. 
 
 ### Kubernetes Checks
 
@@ -65,13 +69,13 @@ Install Calisti and expose dashboard
 smm --non-interactive install -a --anonymous-auth --additional-cp-settings /home/developer/tools/smm/enable-dashboard-expose.yaml -c ~/.kube/demo1.kconf
 ```
 
-check the Calisti SMM multicluster status, do the following:
+To check the Calisti SMM cluster status, do the following:
 
 ```bash
 smm istio cluster status -c ~/.kube/demo1.kconf
 ```
 
-The expected output should show 2 clusters with one instance of control plane.
+The expected output should show something similar to this:
 
 ```
 developer:src > smm istio cluster status -c ~/.kube/demo1.kconf 
@@ -94,7 +98,7 @@ In order to be able to access the Calisti dashboard outside of the lab container
 ```
 
 
-You should be able to open the [dashboard](dashboard) in your browser.
+Now you should be able to open the [dashboard](dashboard) in your browser.
 
 
 ## Deploy the demo app
