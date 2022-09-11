@@ -27,7 +27,7 @@ To setup the k8s cluster execute the following in the terminal.
 /home/developer/tools/cluster/cluster_setup.sh
 ```
 
-This sets up a 3 node cluster with metallb as the k8s load-balancer controller. 
+This sets up a 3 node cluster with metallb as the k8s load-balancer controller in around 3-4 minutes.
 
 ### Kubernetes Checks
 
@@ -69,7 +69,7 @@ Install Calisti and expose dashboard
 smm --non-interactive install -a --anonymous-auth --additional-cp-settings /home/developer/tools/smm/enable-dashboard-expose.yaml -c ~/.kube/demo1.kconf
 ```
 
-To check the Calisti SMM cluster status, do the following:
+After the instalation finishes you can check the Calisti SMM cluster status:
 
 ```bash
 smm istio cluster status -c ~/.kube/demo1.kconf
@@ -78,18 +78,18 @@ smm istio cluster status -c ~/.kube/demo1.kconf
 The expected output should show something similar to this:
 
 ```
-developer:src > smm istio cluster status -c ~/.kube/demo1.kconf 
+developer:src > smm istio cluster status -c ~/.kube/demo1.kconf
+✓ validate-kubeconfig ❯ checking cluster reachability...
 Clusters
 ---
 Name        Type   Provider  Regions  Version   Distribution  Status  Message  
 kind-demo1  Local  kind      []       v1.19.11  KIND          Ready            
-kind-demo2  Peer   kind      []       v1.19.11  KIND          Ready            
 
 
 ControlPlanes
 ---
 Cluster     Name                   Version  Trust Domain     Pods                                             Proxies  
-kind-demo1  cp-v112x.istio-system  1.12.5   [cluster.local]  [istiod-cp-v112x-5cf4c487c6-l47q6.istio-system]  25/25    
+kind-demo1  cp-v113x.istio-system  1.13.5   [cluster.local]  [istiod-cp-v113x-767ccdcfb6-8zz7g.istio-system]  22/22 
 ```
 
 In order to be able to access the Calisti dashboard outside of the lab container we need to enable a reverse-proxy 
@@ -102,9 +102,41 @@ Now you should be able to open the [dashboard](dashboard) in your browser.
 
 
 ## Deploy the demo app
+The Calisti dashboard, as you may have noticed, looks rather empty at this point. This is because we have not deployed any applications to the default namespace. 
+![calisti dashboard 1](images/1_3.png)
+
+Let us proceed to deploy a demo application and see how the system behaves.
 ```bash
 smm demoapp install
 ```
+
+Go back to the SMM dashboard in the Windows workstation, and check that the pods and workloads are running
+
+![calisti dashboard 2](images/1_4.png)
+
+Now click on the menu icon at the top left and select the TOPOLOGY view.
+
+![calisti dashboard 3](images/1_5.png)
+
+Observe the demo application shown in the TOPOLOGY view. Note that it is running in the smm-demo namespace.
+
+![calisti dashboard 4](images/1_6.png)
+
+Zoom into the topology by clicking on it and observe the various microservices in the demo application:
+•	The frontpage microservice calls bookings, catalog and postgresql microservices to populate the page
+•	The bookings microservice calls the analytics and payments microservices 
+•	The payments microservice calls the notifications microservice
+•	The catalog microservice calls the movie microservices.
+•	There are 3 versions of the catalog microservice with version2 using mysql and version3 using a different database
+The nodes in the graph are services or workloads, while the arrows represent network connections between different services. This is based on Istio metrics retrieved from Prometheus. You can click and zoom into the services and note how the traffic protocols along with the rps (requests per second) are also shown in the topology view.
+
+![calisti dashboard 5](images/1_7.png)
+
+SMM is also able to show the details for services such as MySQL and Postgresql – these metrics are not available in Istio and is a value-add provided by SMM. Click on the postgresql service and in the pop-up window, scroll down to note how it shows the details such as SQL transactions per second, etc.  
+
+![calisti dashboard 6](images/1_8.png)
+
+
 
 ## Expose an application using istio GW
 
