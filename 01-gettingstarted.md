@@ -64,6 +64,7 @@ Please copy and paste the activation credentials command provided on the downloa
 
 ![calisti register](images/1_2.png)
 
+
 Install Calisti and expose dashboard
 ```bash
 smm --non-interactive install -a --anonymous-auth --additional-cp-settings /home/developer/tools/smm/enable-dashboard-expose.yaml -c ~/.kube/demo1.kconf
@@ -106,6 +107,7 @@ The Calisti dashboard, as you may have noticed, looks rather empty at this point
 
 ![calisti dashboard 1](images/1_3.png)
 
+
 Let us proceed to deploy a demo application and see how the system behaves.
 ```bash
 smm demoapp install
@@ -115,13 +117,16 @@ Go back to the SMM dashboard in the Windows workstation, and check that the pods
 
 ![calisti dashboard 2](images/1_4.png)
 
+
 Now click on the menu icon at the top left and select the TOPOLOGY view.
 
 ![calisti dashboard 3](images/1_5.png)
 
+
 Observe the demo application shown in the TOPOLOGY view. Note that it is running in the smm-demo namespace.
 
 ![calisti dashboard 4](images/1_6.png)
+
 
 Zoom into the topology by clicking on it and observe the various microservices in the demo application:
 
@@ -138,6 +143,7 @@ Zoom into the topology by clicking on it and observe the various microservices i
 The nodes in the graph are services or workloads, while the arrows represent network connections between different services. This is based on Istio metrics retrieved from Prometheus. You can click and zoom into the services and note how the traffic protocols along with the rps (requests per second) are also shown in the topology view.
 
 ![calisti dashboard 5](images/1_7.png)
+
 
 SMM is also able to show the details for services such as MySQL and Postgresql – these metrics are not available in Istio and is a value-add provided by SMM. Click on the postgresql service and in the pop-up window, scroll down to note how it shows the details such as SQL transactions per second, etc.  
 
