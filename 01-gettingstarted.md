@@ -9,7 +9,11 @@ Upon completion of this lab, you will be able to:
 •	Observe and monitor traffic across various microservices of the demo application
 •	Debug and troubleshoot issues in your service 
 
+## Create a 3 node cluster
 
+```bash
+kind create cluster
+```
 ## Deploy calisti
 ## Deploy the demo app
 ## Expose an application using istio GW
