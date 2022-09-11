@@ -19,7 +19,7 @@ Upon completion of this lab, you will be able to:
 ```
 ## Deploy calisti
 
-Download and untar smm 
+Download and untar calisti
 
 ```bash
 tar -xvf /home/developer/bin-rel/smm/smm_1.10.0_linux_amd64.tar.gz 
