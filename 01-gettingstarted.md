@@ -24,23 +24,71 @@ Upon completion of this lab, you will be able to:
 ```bash
 /home/developer/tools/cluster/cluster_setup.sh
 ```
-## Deploy calisti
 
-Download and untar calisti
+### Kubernetes Checks
 
+To check the status of the Kubernetes clusters, do the following:
+
+Verify the clusters exist.  Expected output should show the `demo1` cluster.
+
+   ```bash
+   kind get clusters
+   ```
+   
+Check the status of the pods running in the clusters.  All pods should be in "Ready" state.
+
+   ```bash
+   kubectl get pods -A
+   ```
+
+
+## Deploy Calisti
+
+Navigate to https://calisti.app. Click on the “Sign up, It’s Free” button and proceed to register and download the Calisti binaries.
+
+![calisti register](images/1_1.png)
+
+For simplicity, the smm binary is already copied in your lab environment
+
+Extract the smm binary and copy to the system path
 ```bash
 tar -xvf /home/developer/bin-rel/smm/smm_1.10.0_linux_amd64.tar.gz 
 cp ./smm /usr/bin
 ```
 
-Copy paste the activation command
+Please copy and paste the activation credentials command provided on the download page to the terminal.
+
+![calisti register](images/1_2.png)
 
 Install Calisti and expose dashboard
 ```bash
 smm --non-interactive install -a --anonymous-auth --additional-cp-settings /home/developer/tools/smm/enable-dashboard-expose.yaml -c ~/.kube/demo1.kconf
 ```
-Enable reverse-proxy 
 
+check the Calisti SMM multicluster status, do the following:
+
+```bash
+smm istio cluster status -c ~/.kube/demo1.kconf
+```
+
+The expected output should show 2 clusters with one instance of control plane.
+
+```
+developer:src > smm istio cluster status -c ~/.kube/demo1.kconf 
+Clusters
+---
+Name        Type   Provider  Regions  Version   Distribution  Status  Message  
+kind-demo1  Local  kind      []       v1.19.11  KIND          Ready            
+kind-demo2  Peer   kind      []       v1.19.11  KIND          Ready            
+
+
+ControlPlanes
+---
+Cluster     Name                   Version  Trust Domain     Pods                                             Proxies  
+kind-demo1  cp-v112x.istio-system  1.12.5   [cluster.local]  [istiod-cp-v112x-5cf4c487c6-l47q6.istio-system]  25/25    
+```
+
+In order to be able to access the Calisti dashboard outside of the lab container we need to enable a reverse-proxy 
 ```bash
 /home/developer/tools/proxy/proxy.sh
 ```
