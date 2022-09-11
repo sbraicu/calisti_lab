@@ -103,6 +103,7 @@ Now you should be able to open the [dashboard](dashboard) in your browser.
 
 ## Deploy the demo app
 The Calisti dashboard, as you may have noticed, looks rather empty at this point. This is because we have not deployed any applications to the default namespace. 
+
 ![calisti dashboard 1](images/1_3.png)
 
 Let us proceed to deploy a demo application and see how the system behaves.
@@ -123,11 +124,17 @@ Observe the demo application shown in the TOPOLOGY view. Note that it is running
 ![calisti dashboard 4](images/1_6.png)
 
 Zoom into the topology by clicking on it and observe the various microservices in the demo application:
+
 •	The frontpage microservice calls bookings, catalog and postgresql microservices to populate the page
+
 •	The bookings microservice calls the analytics and payments microservices 
+
 •	The payments microservice calls the notifications microservice
+
 •	The catalog microservice calls the movie microservices.
+
 •	There are 3 versions of the catalog microservice with version2 using mysql and version3 using a different database
+
 The nodes in the graph are services or workloads, while the arrows represent network connections between different services. This is based on Istio metrics retrieved from Prometheus. You can click and zoom into the services and note how the traffic protocols along with the rps (requests per second) are also shown in the topology view.
 
 ![calisti dashboard 5](images/1_7.png)
