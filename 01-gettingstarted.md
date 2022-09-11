@@ -2,6 +2,8 @@
 
 Welcome to the Calisti Webinar - learn to deploy, manage and troubleshoot your service mesh.
 
+![calisti](images/1_0.png)
+
 ## Scenario
 
 A service mesh provides many benefits to Cloud Native applications, including observability, security, and load-balancing. However, mesh architectures present operators with several inherent challenges including lifecycle management, fragmented observability, and the complexity of enabling advanced use-cases, such as canary deployments, customized traffic management and circuit breakers.
@@ -31,15 +33,15 @@ This sets up a 3 node cluster with metallb as the k8s load-balancer controller i
 
 ### Kubernetes Checks
 
-To check the status of the Kubernetes clusters, do the following:
+To check the status of the Kubernetes cluster, do the following:
 
-Verify the clusters exist.  Expected output should show the `demo1` cluster.
+Verify the cluster exist.  Expected output should show the `demo1` cluster.
 
    ```bash
    kind get clusters
    ```
    
-Check the status of the pods running in the clusters.  All pods should be in "Ready" state.
+Check the status of the pods running in the cluster.  All pods should be in "Ready" state.
 
    ```bash
    kubectl get pods -A
