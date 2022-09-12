@@ -4,7 +4,7 @@ Welcome to the Calisti Webinar - learn to deploy, manage and troubleshoot your s
 
 ![calisti](images/1_0.png)
 
-# Getting started
+# Getting startedd
 
 A service mesh provides many benefits to Cloud Native applications, including observability, security, and load-balancing. However, mesh architectures present operators with several inherent challenges including lifecycle management, fragmented observability, and the complexity of enabling advanced use-cases, such as canary deployments, customized traffic management and circuit breakers.
 
