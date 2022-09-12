@@ -2,8 +2,4 @@
 
 
 ## Workloads, services and traffic
-## Calisti dashboard and Grafana
-## Application topology
-## Traffic generator
-
 
