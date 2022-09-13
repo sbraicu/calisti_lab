@@ -1,4 +1,4 @@
-# Observe system health and topology
+# Visaualise your mesh
 
 ## Topolgy 
 
@@ -117,4 +117,6 @@ Jaeger is exposed through an ingress gateway and the links are present on the UI
 In the Jaeger UI you can see the whole call stack in the microservices architecture. You can see when exactly the root request was started and how much each request took.
 
 ![ttapui 3](images/ttapui_3.png)
+
+
 
