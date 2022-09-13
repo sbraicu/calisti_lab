@@ -49,8 +49,7 @@ The demo application uses golang services which are configured to propagate the 
 
 When load is sent to the application then traces can be perceived right away.
 Jaeger is exposed through an ingress gateway and the links are present on the UI (both on the graph and list view).
-When load is sent to the application then traces can be perceived right away.
-Jaeger is exposed through an ingress gateway and the links are present on the UI (both on the graph and list view).
+
 
 ![ttapui 2](images/ttapui_2.png)
 
