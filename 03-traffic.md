@@ -131,7 +131,7 @@ kubectl apply -f meshgw.yaml
 Get the IP address of the gateway.
 
 ```bash
-kubectl -n default get istiomeshgateways demo-gw\
+kubectl -n default get istiomeshgateways demo-gw
 ```
 
 Create the Gateway and VirtualService resources to configure listening ports on the matching gateway deployment.
@@ -153,7 +153,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "echo.acme.corp"
+    - "echo.172.19.250.3.nip.io"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -162,7 +162,7 @@ metadata:
   namespace: default
 spec:
   hosts:
-  - "echo.acme.corp"
+  - "echo.172.19.250.3.nip.io"
   gateways:
   - echo 
   http:
@@ -177,7 +177,7 @@ kubectl apply -f gw_vs.yaml
 Access the service on the external address.
 
 ```bash
-curl -i --resolve 'echo.acme.corp:80:240.240.1.100' echo.acme.org
+curl -i echo.172.19.250.3.nip.io
 ```
 
 Here we use the --resolve flag for curl to avoid having to implement DNS lookups for echo.acme.corp--the service mesh state will choose its own route anyway based on service discovery.
