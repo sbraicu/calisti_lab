@@ -1,4 +1,4 @@
-# Visaualise your mesh
+# Visualise your mesh
 
 ## Topolgy 
 
@@ -12,9 +12,28 @@ Select the smm-demo namespace and display its topolgy.
 
 ![topology 1](images/topology_1.png)
 
-The nodes in the graph are services or workloads, while the arrows represent network connections between different services. This is based on Istio metrics retrieved from Prometheus.
+The nodes in the graph are services or workloads, while the arrows represent network connections between different services. This is based on Istio metrics retrieved from Prometheus. You can click and zoom into the services and note how the traffic protocols along with the rps (requests per second) are also shown in the topology view.
 
 For certain services like MySQL and PostgreSQL, protocol-specific metrics normally not available in Istio are also shown, for example, sessions or transactions per second.
+
+We can easily observe the various microservices in the demo application:
+
+•	The frontpage microservice calls bookings, catalog and postgresql microservices to populate the page
+
+•	The bookings microservice calls the analytics and payments microservices 
+
+•	The payments microservice calls the notifications microservice
+
+•	The catalog microservice calls the movie microservices.
+
+•	There are 3 versions of the catalog microservice with version2 using mysql and version3 using a different database
+
+
+
+Calisti is also able to show the details for services such as MySQL and Postgresql – these metrics are not available in Istio and is a value-add provided by Calisti. Click on the postgresql service and in the pop-up window, scroll down to note how it shows the details such as SQL transactions per second, etc.  
+
+![calisti dashboard 6](images/1_8.png)
+
 
 Select one node in the graph (for example the postgresql service) and display its details. By drilling down and selecting the pod it is also possible to display its logs directly in the dashboard (click on the ![log](images/log_icon.png) icon)
 

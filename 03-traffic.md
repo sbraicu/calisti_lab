@@ -15,8 +15,6 @@ A circuit breaker can have three states:
 
 Service Mesh Manager is using Istio’s - and therefore Envoy’s - circuit breaking feature under the hood.
 
-Let's configure a circuit breaking rule using the UI
-
 
 ## Fault injection
 
@@ -134,7 +132,7 @@ Get the IP address of the gateway.
 kubectl -n default get istiomeshgateways demo-gw
 ```
 
-Create the Gateway and VirtualService resources to configure listening ports on the matching gateway deployment.
+Create the Gateway and VirtualService resources to configure listening ports on the matching gateway deployment. The hosts fields should point to the external hostname of the service. (for testing purposes we are using nip.io, which is a domain name that provides wildcard DNS for any IP address.)
 
 ```bash
 cat > gw_vs.yaml <<EOF
