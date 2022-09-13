@@ -177,5 +177,3 @@ Access the service on the external address.
 ```bash
 curl -i echo.172.19.250.3.nip.io
 ```
-
-Here we use the --resolve flag for curl to avoid having to implement DNS lookups for echo.acme.corp--the service mesh state will choose its own route anyway based on service discovery.

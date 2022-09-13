@@ -18,9 +18,11 @@ Upon completion of this lab, you will be able to:
 
 •	Deploy a demo application in the service mesh
 
-•	Observe and monitor traffic across various microservices of the demo application
+•	Observe, monitor and manage traffic across various microservices
 
-•	Debug and troubleshoot issues in your service 
+•	Debug and troubleshoot issues in your service
+
+•	Configure an ingress proxy for a custom service
 
 ## Create a 3 node cluster
 To setup the k8s cluster execute the following in the terminal.
