@@ -37,15 +37,15 @@ To check the status of the Kubernetes cluster, do the following:
 
 Verify the cluster exist.  Expected output should show the `demo1` cluster.
 
-   ```bash
-   kind get clusters
-   ```
+```bash
+kind get clusters
+```
    
 Check the status of the pods running in the cluster.  All pods should be in "Ready" state.
 
-   ```bash
-   kubectl get pods -A
-   ```
+```bash
+kubectl get pods -A
+```
 
 
 ## Deploy Calisti
@@ -93,6 +93,12 @@ ControlPlanes
 ---
 Cluster     Name                   Version  Trust Domain     Pods                                             Proxies  
 kind-demo1  cp-v113x.istio-system  1.13.5   [cluster.local]  [istiod-cp-v113x-767ccdcfb6-8zz7g.istio-system]  22/22 
+```
+
+Please wait to have all the Pods in Running or Completed status
+
+```bash
+kubectl get pods -A
 ```
 
 In order to be able to access the Calisti dashboard outside of the lab container we need to enable a reverse-proxy 
