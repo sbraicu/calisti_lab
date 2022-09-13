@@ -130,7 +130,7 @@ Let us proceed to deploy a demo application and see how the system behaves.
 smm demoapp install
 ```
 
-Go back to the SMM dashboard in the Windows workstation, and check that the pods and workloads are running
+Go back to the SMM dashboard and check that the pods and workloads are running
 
 ![calisti dashboard 2](images/1_4.png)
 
