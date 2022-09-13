@@ -114,6 +114,7 @@ smm login
 
 Please copy the generated token and paste in the dedicated field when opening the [dashboard](dashboard) in your browser.
 
+![calisti dashboard login](images/dashboard_login.png)
 
 ## Deploy the demo app
 The Calisti dashboard, as you may have noticed, looks rather empty at this point. This is because we have not deployed any applications to the default namespace. 
