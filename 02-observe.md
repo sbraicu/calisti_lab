@@ -2,7 +2,7 @@
 
 ## Topolgy 
 
-The TOPOLOGY page of the Service Mesh Manager web interface displays the topology of services and workloads inside the mesh, and annotates it with real-time and information about latency, throughput, or HTTP request failures. You can also display historical data by adjusting the timeline.
+The TOPOLOGY page of the Service Mesh Manager web interface displays the topology of services and workloads inside the mesh, and annotates it with real-time information about latency, throughput, or HTTP request failures. You can also display historical data by adjusting the timeline.
 
 The topology view is almost entirely based on metrics: metrics received from Prometheus and enhanced with information from Kubernetes.
 
@@ -23,13 +23,13 @@ Select one node in the graph (for example the postgresql service) and display it
 ## Generate traffic load
 
 
-Most of the data displayed in the Calisti interface is based on anaylsing the traffic received by the different applications in the cluster. Calisti provides several mechanisms to generate traffic.
+Most of the data displayed and the fetures provided in the Calisti interface is based on anaylsing the traffic received by the different applications in the cluster. Calisti provides several mechanisms to generate traffic.
 
-If there is no traffic generated, the topolgy cannot be displayed, and an option to generate traffic is displayed instead.
+If there is no traffic generated, the topolgy cannot be displayed and an option to generate traffic is displayed instead.
 
 ![traffic 1](images/traffic_1.png)
 
-If the topology is generated, triggering the traffic generation can be done using the HTML button on the left
+If the topology is displayed, triggering the traffic generation can be done using the HTML button on the left
 
 ![traffic 2](images/traffic_2.png)
 
@@ -81,20 +81,40 @@ The output should be similar to
 
 ![ttap 1](images/ttap_1.png)
 
-It also possible to filter on workload
+It is also possible to filter on workload
 
 ```bash
 smm tap --ns smm-demo workload/bookings-v1
 ```
 
-or a pod
-```bash
-POD_NAME=$(kubectl get pod -n smm-demo -l app=bookings -o jsonpath="{.items[0]..metadata.name}")
-smm tap --ns smm-demo pod/$POD_NAME
-```
 
 and also use filter tags to only display the relevant lines like
 
 ```bash
 smm tap ns/smm-demo --method GET --response-code 500,599
 ```
+
+### Traffic tap using the UI
+
+The functionality is also available in the UI, including setting the different filters.
+
+![ttapui 1](images/ttapui_1.png)
+
+Calisti also provides distributed  tracin - the process of tracking individual requests throughout their whole call stack in the system.
+
+With distributed tracing in place it is possible to visualize full call stacks, to see which service called which service, how long each call took and how much were the network latencies between them. It is possible to tell where a request failed or which service took too much time to respond.
+To collect and visualize this information Istio comes with tools like Jaeger which is installed automatically by default when installing Service Mesh Manager.
+
+The demo application uses golang services which are configured to propagate the necessary tracing headers.
+
+When load is sent to the application then traces can be perceived right away.
+Jaeger is exposed through an ingress gateway and the links are present on the UI (both on the graph and list view).
+When load is sent to the application then traces can be perceived right away.
+Jaeger is exposed through an ingress gateway and the links are present on the UI (both on the graph and list view).
+
+![ttapui 2](images/ttapui_2.png)
+
+In the Jaeger UI you can see the whole call stack in the microservices architecture. You can see when exactly the root request was started and how much each request took.
+
+![ttapui 3](images/ttapui_3.png)
+
