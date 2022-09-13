@@ -96,7 +96,7 @@ Set the Following values
 - FAULT INJECTION:
   - DELAY PERCENTAGE: 50
   - ABORT PERCENTAGE: 40
-  - FIXED DELAY: 3
+  - FIXED DELAY: 3s
   - ABORT HTTP STATUS CODE: 503
 
 ![fault 2](images/fault_2.png)
