@@ -123,6 +123,7 @@ The Calisti dashboard, as you may have noticed, looks rather empty at this point
 
 
 Let us proceed to deploy a demo application and see how the system behaves.
+
 ```bash
 smm demoapp install
 ```
@@ -162,9 +163,5 @@ The nodes in the graph are services or workloads, while the arrows represent net
 Calisti is also able to show the details for services such as MySQL and Postgresql – these metrics are not available in Istio and is a value-add provided by Calisti. Click on the postgresql service and in the pop-up window, scroll down to note how it shows the details such as SQL transactions per second, etc.  
 
 ![calisti dashboard 6](images/1_8.png)
-
-
-
-## Expose an application using istio GW
 
 
