@@ -17,7 +17,7 @@ For smm-demo namespace
 smm tap ns/smm-demo
 ```
 
-The output should be similar to
+Press Ctrl+C in the terminap to stop. The output should be similar to
 
 ![ttap 1](images/ttap_1.png)
 

@@ -37,7 +37,7 @@ This sets up a 3 node cluster with metallb as the k8s load-balancer controller i
 
 To check the status of the Kubernetes cluster, do the following:
 
-Verify the cluster exist.  Expected output should show the `demo1` cluster.
+Verify the cluster exists.  Expected output should show the `demo1` cluster.
 
 ```bash
 kind get clusters
@@ -69,7 +69,7 @@ Please copy and paste the activation credentials command provided on the downloa
 ![calisti register](images/1_2.png)
 
 
-Install Calisti and expose dashboard
+Install Calisti and expose dashboard (the installation will take around 5 min)
 ```bash
 smm --non-interactive install -a --additional-cp-settings /home/developer/tools/smm/enable-dashboard-expose.yaml -c ~/.kube/demo1.kconf
 ```

@@ -60,17 +60,17 @@ Going back to the overview page of the dashboard we can now see the traffic incr
 
 ![traffic 4](images/traffic_4.png)
 
-For the demoapp application constant traffic can also be generated using the CLI. 
+For the demoapp application constant traffic can also be generated using the CLI. (already started when deployed, no need to start again)
 
 Start with
 
-```bash
+```
 smm demoapp load start
 ```
 
 and stop with
 
-```bash
+```
 smm demoapp load stop
 ```
 
