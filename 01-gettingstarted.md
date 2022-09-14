@@ -45,7 +45,7 @@ kind get clusters
 Get the list of nodes in the cluster. We should have 3.
 
 ```bash
-kind get nodes
+kind get nodes --name demo1
 ```
 
 Check the status of the pods running in the cluster.  All pods should be in "Running" state.
