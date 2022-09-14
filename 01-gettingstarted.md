@@ -74,7 +74,7 @@ Install Calisti and expose dashboard (the installation will take around 5 min)
 smm --non-interactive install -a --additional-cp-settings /home/developer/tools/smm/enable-dashboard-expose.yaml -c ~/.kube/demo1.kconf
 ```
 
-After the instalation finishes you can check the Calisti SMM cluster status:
+After the installation finishes you can check the Calisti SMM cluster status:
 
 ```bash
 smm istio cluster status -c ~/.kube/demo1.kconf
@@ -130,7 +130,7 @@ Let us proceed to deploy a demo application and see how the system behaves.
 smm demoapp install
 ```
 
-Go back to the SMM dashboard and check that the pods and workloads are running (refresh the page in order to get the new deployed namespaces)
+Go back to the SMM dashboard and check that the pods and workloads are running (refresh the page if the new deployed namespaces are not yet shown)
 
 ![calisti dashboard 2](images/1_4.png)
 

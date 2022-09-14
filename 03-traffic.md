@@ -17,7 +17,7 @@ For smm-demo namespace
 smm tap ns/smm-demo
 ```
 
-Press Ctrl+C in the terminap to stop. The output should be similar to
+Press Ctrl+C in the terminal to stop. The output should be similar to
 
 ![ttap 1](images/ttap_1.png)
 
@@ -47,13 +47,13 @@ To collect and visualize this information Istio comes with tools like Jaeger whi
 
 The demo application uses golang services which are configured to propagate the necessary tracing headers.
 
-When load is sent to the application then traces can be perceived right away.
-Jaeger is exposed through an ingress gateway and the links are present on the UI (both on the graph and list view).
+Once load is sent to the application, traces can be perceived right away.
+Jaeger is exposed through an ingress gateway and the links are present on the UI (both on the graph and list view). 
 
 
 ![ttapui 2](images/ttapui_2.png)
 
-In the Jaeger UI you can see the whole call stack in the microservices architecture. You can see when exactly the root request was started and how much each request took.
+In the Jaeger UI you can see the whole call stack in the microservices architecture. You can see when exactly the root request was started and how much each request took. 
 
 ![ttapui 3](images/ttapui_3.png)
 
@@ -233,6 +233,7 @@ kubectl apply -f gw_vs.yaml
 ```
 Access the service on the external address.
 
+
 ```bash
-curl -i echo.172.19.250.3.nip.io
+/home/developer/tools/end/access_gw.sh
 ```

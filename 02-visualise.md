@@ -12,7 +12,7 @@ Select the smm-demo namespace and display its topolgy.
 
 ![topology 1](images/topology_1.png)
 
-The nodes in the graph are services or workloads, while the arrows represent network connections between different services. This is based on Istio metrics retrieved from Prometheus. You can click and zoom into the services and note how the traffic protocols along with the rps (requests per second) are also shown in the topology view.
+The nodes in the graph are services or workloads, while the arrows represent network connections between different services. This is based on Istio metrics retrieved from Prometheus. You can click and zoom into the services and note how the traffic protocols along with the RPS (requests per second) are also shown in the topology view.
 
 For certain services like MySQL and PostgreSQL, protocol-specific metrics normally not available in Istio are also shown, for example, sessions or transactions per second.
 
@@ -42,13 +42,13 @@ Select one node in the graph (for example the postgresql service) and display it
 ## Generate traffic load
 
 
-Most of the data displayed and the fetures provided in the Calisti interface is based on anaylsing the traffic received by the different applications in the cluster. Calisti provides several mechanisms to generate traffic.
+Most of the data displayed and the features provided in the Calisti interface is based on anaylsing the traffic received by the different applications in the cluster. Calisti provides several mechanisms to generate traffic.
 
 If there is no traffic generated, the topolgy cannot be displayed and an option to generate traffic is displayed instead.
 
 ![traffic 1](images/traffic_1.png)
 
-If the topology is displayed, triggering the traffic generation can be done using the HTML button on the left
+If the topology is displayed, triggering the traffic generation can be done using the HTTP button on the left
 
 ![traffic 2](images/traffic_2.png)
 
