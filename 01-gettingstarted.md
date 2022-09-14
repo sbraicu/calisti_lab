@@ -42,7 +42,12 @@ Verify the cluster exists.  Expected output should show the `demo1` cluster.
 ```bash
 kind get clusters
 ```
-   
+Get the list of nodes in the cluster. We should have 3.
+
+```bash
+kind get nodes
+```
+
 Check the status of the pods running in the cluster.  All pods should be in "Running" state.
 
 ```bash
@@ -52,11 +57,10 @@ kubectl get pods -A
 
 ## Deploy Calisti
 
-Navigate to https://calisti.app. Click on the “Sign up, It’s Free” button and proceed to register and download the Calisti binaries.
+Navigate to https://calisti.app. Click on the “Sign up, It’s Free” button and proceed to register and download the Calisti binaries (Note: for simplicity, the smm binary is already copied in your lab environment)
 
 ![calisti register](images/1_1.png)
 
-For simplicity, the smm binary is already copied in your lab environment
 
 Extract the smm binary and copy to the system path
 ```bash
@@ -103,6 +107,19 @@ Please wait to have all the Pods in Running or Completed status
 kubectl get pods -A
 ```
 
+You can also have an overview of the cluster using k9s - a terminal based UI to interact with your Kubernetes cluster.
+
+```bash
+k9s
+```
+
+![k9s 1](images/k9s_1.png)
+(press Ctrl+c to exit)
+
+## Calisti dashboard
+
+Service Mesh Manager provides a dashboard interface that can be used to diagnose any issues with the underlying deployment.
+
 In order to be able to access the Calisti dashboard outside of the lab container we need to enable a reverse-proxy 
 ```bash
 /home/developer/tools/proxy/proxy.sh
@@ -114,7 +131,7 @@ For authenticating to the dashboard we will need an authentication token which i
 smm login
 ```
 
-Please copy the generated token and paste in the dedicated field when opening the [dashboard](dashboard) in your browser.
+Please copy the generated token and paste in the dedicated field when opening the [dashboard](dashboard) in your browser. Note that the token has a limited validity in time, so if you encounter any errors please re-generate & retry.
 
 ![calisti dashboard login](images/dashboard_login.png)
 
@@ -130,7 +147,7 @@ Let us proceed to deploy a demo application and see how the system behaves.
 smm demoapp install
 ```
 
-Go back to the SMM dashboard and check that the pods and workloads are running (refresh the page if the new deployed namespaces are not yet shown)
+Go back to the SMM dashboard and check that the pods and workloads are running. select the smm-demo namespace. (refresh the page if the new deployed namespaces are not yet shown)
 
 ![calisti dashboard 2](images/1_4.png)
 
