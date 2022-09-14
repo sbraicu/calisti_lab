@@ -271,9 +271,59 @@ spec:
 EOF
 kubectl apply -f gw_vs.yaml
 ```
-Access the service on the external address.
+Access the service on the external address - the script is making a request to 
 
 
 ```bash
 /home/developer/tools/end/access_gw.sh
+```
+
+The script is making a curl request to echo.172.19.250.3.nip.io and should be able to successfuly reach the echo service.
+The expected result should be similar to:
+
+```
+HTTP/1.1 200 OK
+date: Wed, 14 Sep 2022 07:44:57 GMT
+content-type: text/plain
+server: istio-envoy
+x-envoy-upstream-service-time: 0
+transfer-encoding: chunked
+
+
+
+Hostname: echo-7ffdff66-86dvs
+
+Pod Information:
+        -no pod information available-
+
+Server values:
+        server_version=nginx: 1.13.3 - lua: 10008
+
+Request Information:
+        client_address=10.244.1.31
+        method=GET
+        real path=/
+        query=
+        request_version=1.1
+        request_scheme=http
+        request_uri=http://echo.172.19.250.3.nip.io:8080/
+
+Request Headers:
+        accept=*/*
+        host=echo.172.19.250.3.nip.io
+        user-agent=curl/7.80.0
+        x-b3-sampled=0
+        x-b3-spanid=eceed2c536945ef6
+        x-b3-traceid=0ed39aea7da454cceceed2c536945ef6
+        x-envoy-attempt-count=1
+        x-envoy-decorator-operation=echo.default.svc.cluster.local:80/*
+        x-envoy-internal=true
+        x-envoy-peer-metadata=ChQKDkFQUF9DT05UQUlORVJTEgIaAAoaCgpDTFVTVEVSX0lEEgwaCmtpbmQtZGVtbzEKGQoNSVNUSU9fVkVSU0lPThIIGgYxLjEzLjUK2wIKBkxBQkVMUxLQAirNAgoZCgxnYXRld2F5LW5hbWUSCRoHZGVtby1ndwoZCgxnYXRld2F5LXR5cGUSCRoHaW5ncmVzcwonCgxpc3Rpby5pby9yZXYSFxoVY3AtdjExM3guaXN0aW8tc3lzdGVtCiEKEXBvZC10ZW1wbGF0ZS1oYXNoEgwaCjVjNjhmZDZjZDkKHgoHcmVsZWFzZRITGhFpc3Rpby1tZXNoZ2F0ZXdheQosCh9zZXJ2aWNlLmlzdGlvLmlvL2Nhbm9uaWNhbC1uYW1lEgkaB2RlbW8tZ3cKLwojc2VydmljZS5pc3Rpby5pby9jYW5vbmljYWwtcmV2aXNpb24SCBoGbGF0ZXN0CiEKF3NpZGVjYXIuaXN0aW8uaW8vaW5qZWN0EgYaBHRydWUKJwoZdG9wb2xvZ3kuaXN0aW8uaW8vbmV0d29yaxIKGghuZXR3b3JrMQoSCgdNRVNIX0lEEgcaBW1lc2gxCiIKBE5BTUUSGhoYZGVtby1ndy01YzY4ZmQ2Y2Q5LWprNmdrChYKCU5BTUVTUEFDRRIJGgdkZWZhdWx0CksKBU9XTkVSEkIaQGt1YmVybmV0ZXM6Ly9hcGlzL2FwcHMvdjEvbmFtZXNwYWNlcy9kZWZhdWx0L2RlcGxveW1lbnRzL2RlbW8tZ3cKFwoRUExBVEZPUk1fTUVUQURBVEESAioAChoKDVdPUktMT0FEX05BTUUSCRoHZGVtby1ndw==
+        x-envoy-peer-metadata-id=router~10.244.1.31~demo-gw-5c68fd6cd9-jk6gk.default~default.svc.cluster.local
+        x-forwarded-for=10.244.1.1
+        x-forwarded-proto=http
+        x-request-id=39e6de8f-65d1-4999-8431-10f8b5bcc95c
+
+Request Body:
+        -no body in request-
 ```
