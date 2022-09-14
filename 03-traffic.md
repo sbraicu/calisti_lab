@@ -74,6 +74,43 @@ A circuit breaker can have three states:
 
 Service Mesh Manager is using Istio’s - and therefore Envoy’s - circuit breaking feature under the hood.
 
+Let's configure a circuit breaker for a service. In the topology select the analytics service, select the CIRCUIT BREAKER tab and then Configure.
+
+![circuit 2](images/circuit_2.png)
+
+In order to be able to see immediate results of the Circuit Breaker activation, configure it with the with the following values:
+- TCP settings
+  - MAX CONNECTIONS: 1
+  - CONNECTION TIMEOUT: 1
+- HTTP settings
+  - MAX PENDING HTTP REQUESTS: 1
+  - MAX HTTP REQUESTS: 1
+  - MAX REQUESTS PER CONNECTION: 1
+  - MAX RETRIES: 1
+- Outlier Detection settings
+  - CONSECUTIVE ERRORS: 1
+  - INTERVAL: 10
+  - VASE EJECTION TIME: 10
+  - MAX EJECTION PERCENTAGE: 1
+
+![circuit 3](images/circuit_3.png)
+
+Generate some additional load on the analytics service.
+
+![circuit 4](images/circuit_4.png)
+
+When traffic begins to flow the circuit breaker starts to trip requests. In the Service Mesh Manager UI, you can see two live Grafana dashboards which specifically show the circuit breaker trips and help you learn more about the errors involved.
+
+The first dashboard details the percentage of total requests that were tripped by the circuit breaker. When there are no circuit breaker errors, and your service works as expected, this graph shows 0%. Otherwise, it shows the percentage of the requests that were tripped by the circuit breaker.
+
+The second dashboard provides a breakdown of the trips caused by the circuit breaker by source. If no circuit breaker trips occurred, there are no spikes in this graph. Otherwise, it shows which service caused the circuit breaker to trip, when, and how many times. Malicious clients can be tracked by checking this graph.
+
+![circuit 4](images/breaker_5.png)
+
+To remove circuit breaking select the Delete icon in the top of the CIRCUIT BREAKER page.
+
+![circuit 5](images/breaker_6.png)
+
 
 ## Fault injection
 
@@ -108,7 +145,8 @@ Click Apply and check the status in the Topology page as the result of the injec
 
 ## Ingress Gateway
 
-Ingress gateways define an entry point into your Istio mesh for incoming traffic.
+ Gateways are to manage inbound and outbound traffic for your mesh, letting you specify which traffic you want to enter or leave the mesh. Gateway configurations are applied to standalone Envoy proxies that are running at the edge of the mesh, rather than sidecar Envoy proxies running alongside your service workloads. 
+ Ingress gateways define an entry point into your Istio mesh for incoming traffic.
 
 ![fault 5](images/ingress_1.png)
 
@@ -157,6 +195,7 @@ kubectl apply -f echo.yaml
 ```
 
 Create a new ingress gateway using the IstioMeshGateway resource. Calisti creates a new ingress gateway deployment and a corresponding service, and automatically labels them with the gateway-name and gateway-type labels and their corresponding values.
+IstioMeshGateway is a custom Istio operator as defined by SMM that allows to easily setup multiple gateways in a cluster.
 
 ```bash
 cat > meshgw.yaml <<EOF
@@ -191,7 +230,8 @@ Get the IP address of the gateway.
 kubectl -n default get istiomeshgateways demo-gw
 ```
 
-Create the Gateway and VirtualService resources to configure listening ports on the matching gateway deployment. The hosts fields should point to the external hostname of the service. (for testing purposes we are using nip.io, which is a domain name that provides wildcard DNS for any IP address.)
+Create the Gateway and VirtualService resources to configure listening ports on the matching gateway deployment. Virtual Service defines a set of traffic routing rules to apply when a host is addressed. Each routing rule defines matching criteria for traffic of a specific protocol. If the traffic is matched, then it is sent to a named destination service.
+The hosts fields should point to the external hostname of the service. (for testing purposes we are using nip.io, which is a domain name that provides wildcard DNS for any IP address.)
 
 ```bash
 cat > gw_vs.yaml <<EOF
