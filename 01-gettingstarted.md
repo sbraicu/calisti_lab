@@ -86,7 +86,7 @@ smm istio cluster status -c ~/.kube/demo1.kconf
 
 The expected output should show something similar to this:
 
-```
+```yaml
 developer:src > smm istio cluster status -c ~/.kube/demo1.kconf
 ✓ validate-kubeconfig ❯ checking cluster reachability...
 Clusters
