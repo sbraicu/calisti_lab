@@ -275,10 +275,10 @@ Access the service on the external address.
 
 
 ```bash
-/home/ubuntu/lab/gw/access_gw.sh
+curl -i echo.172.18.250.3.nip.io
 ```
 
-The script is making a curl request to echo.172.19.250.3.nip.io and should be able to successfuly reach the echo service.
+The command is making a GET request to echo.172.18.250.3.nip.io and should be able to successfuly reach the echo service.
 The expected result should be similar to:
 
 ```
