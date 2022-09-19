@@ -28,7 +28,7 @@ Upon completion of this lab, you will be able to:
 To setup the k8s cluster execute the following in the terminal.
 
 ```bash
-/home/developer/tools/cluster/cluster_setup.sh
+/home/ubuntu/lab/cluster/cluster_setup.sh
 ```
 
 This sets up a 3 node cluster with metallb as the k8s load-balancer controller in around 3-4 minutes.
