@@ -250,7 +250,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "echo.172.19.250.3.nip.io"
+    - "echo.172.18.250.3.nip.io"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -259,7 +259,7 @@ metadata:
   namespace: default
 spec:
   hosts:
-  - "echo.172.19.250.3.nip.io"
+  - "echo.172.18.250.3.nip.io"
   gateways:
   - echo 
   http:
