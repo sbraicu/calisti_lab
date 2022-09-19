@@ -131,7 +131,7 @@ For authenticating to the dashboard we will need an authentication token which i
 smm login
 ```
 
-Please copy the generated token and paste in the dedicated field when opening the [dashboard](dashboard) in your browser. Note that the token has a limited validity in time, so if you encounter any errors please re-generate & retry.
+Please copy the generated token and paste in the dedicated field when opening the [dashboard](http://location.hostname:8080) in your browser. Note that the token has a limited validity in time, so if you encounter any errors please re-generate & retry.
 
 ![calisti dashboard login](images/dashboard_login.png)
 
