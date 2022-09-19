@@ -271,11 +271,11 @@ spec:
 EOF
 kubectl apply -f gw_vs.yaml
 ```
-Access the service on the external address - the script is making a request to 
+Access the service on the external address.
 
 
 ```bash
-/home/developer/tools/end/access_gw.sh
+/home/ubuntu/lab/gw/access_gw.sh
 ```
 
 The script is making a curl request to echo.172.19.250.3.nip.io and should be able to successfuly reach the echo service.

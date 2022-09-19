@@ -64,8 +64,8 @@ Navigate to https://calisti.app. Click on the “Sign up, It’s Free” button 
 
 Extract the smm binary and copy to the system path
 ```bash
-tar -xvf /home/developer/bin-rel/smm/smm_1.10.0_linux_amd64.tar.gz 
-cp ./smm /usr/bin
+tar -xvf /home/ubuntu/lab/software/smm/smm_1.10.0_linux_amd64.tar.gz
+sudo cp ./smm /usr/bin
 ```
 
 Please copy and paste the activation credentials command provided on the download page to the terminal.
@@ -75,7 +75,7 @@ Please copy and paste the activation credentials command provided on the downloa
 
 Install Calisti and expose dashboard (the installation will take around 5 min)
 ```bash
-smm --non-interactive install -a --additional-cp-settings /home/developer/tools/smm/enable-dashboard-expose.yaml -c ~/.kube/demo1.kconf
+smm --non-interactive install -a --additional-cp-settings /home/ubuntu/lab/config/smm/enable-dashboard-expose.yaml -c ~/.kube/demo1.kconf
 ```
 
 After the installation finishes you can check the Calisti SMM cluster status:
@@ -122,7 +122,7 @@ Service Mesh Manager provides a dashboard interface that can be used to diagnose
 
 In order to be able to access the Calisti dashboard outside of the lab container we need to enable a reverse-proxy 
 ```bash
-/home/developer/tools/proxy/proxy.sh
+/home/ubuntu/lab/config/smm/proxy.sh
 ```
 
 For authenticating to the dashboard we will need an authentication token which is generated using the smm login command
