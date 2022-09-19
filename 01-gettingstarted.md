@@ -65,7 +65,7 @@ Navigate to https://calisti.app. Click on the “Sign up, It’s Free” button 
 Extract the smm binary and copy to the system path
 ```bash
 tar -xvf /home/ubuntu/lab/software/smm/smm_1.10.0_linux_amd64.tar.gz
-sudo cp ./smm /usr/bin
+sudo mv ./smm /usr/bin
 ```
 
 Please copy and paste the activation credentials command provided on the download page to the terminal.
