@@ -24,8 +24,9 @@ Upon completion of this lab, you will be able to:
 
 •	Configure an ingress proxy for a custom service
 
-## Install docker and kind
-To setup the k8s cluster execute the following in the terminal.
+## Install the required environment
+
+The script will disable the swap and install docker, kubectl and kind.
 
 ```bash
 $HOME/lab/init/initial_setup.sh

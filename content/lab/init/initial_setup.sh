@@ -8,11 +8,14 @@ sudo sed -i '/ swap / s/^/#/' /etc/fstab
 sudo apt update
 sudo apt -y install docker.io
 
-##install kind
+#install kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/bin/kubectl
+
+#install kind
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.15.0/kind-linux-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/bin/kind
-
 
 #allow current user to run docker
 sudo usermod -aG docker $USER
