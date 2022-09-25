@@ -64,14 +64,17 @@ kubectl get pods -A
 
 ## Deploy Calisti
 
-Navigate to https://calisti.app. Click on the “Sign up, It’s Free” button and proceed to register and download the Calisti binaries (Note: for simplicity, the smm binary is already copied in your lab environment)
+Navigate to https://calisti.app. Click on the “Sign up, It’s Free” button and proceed to register and download the Calisti binaries.
 
 ![calisti register](images/1_1.png)
 
+After you downloaded the smm archive on your local computer please use the upload button to upload the file to the server. (file will be copied under $HOME/files)
 
-Extract the smm binary and copy to the system path
+![calisti dashboard 1](images/upload_help.png)
+
+Extract the smm binary and copy it to the system path
 ```bash
-tar -xvf $HOME/lab/software/smm/smm_1.10.0_linux_amd64.tar.gz
+tar -xvf $HOME/files/smm_1.10.0_linux_amd64.tar.gz
 sudo cp ./smm /usr/bin
 ```
 
