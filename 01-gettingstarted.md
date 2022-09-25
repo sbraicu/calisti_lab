@@ -24,6 +24,13 @@ Upon completion of this lab, you will be able to:
 
 •	Configure an ingress proxy for a custom service
 
+## Install docker and kind
+To setup the k8s cluster execute the following in the terminal.
+
+```bash
+$HOME/lab/init/initial_setup.sh
+```
+
 ## Create a 3 node cluster
 To setup the k8s cluster execute the following in the terminal.
 
