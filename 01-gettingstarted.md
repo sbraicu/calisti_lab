@@ -28,7 +28,7 @@ Upon completion of this lab, you will be able to:
 To setup the k8s cluster execute the following in the terminal.
 
 ```bash
-/home/ubuntu/lab/cluster/cluster_setup.sh
+$HOME/lab/cluster/cluster_setup.sh
 ```
 
 This sets up a 3 node cluster with metallb as the k8s load-balancer controller in around 3-4 minutes.
@@ -64,7 +64,7 @@ Navigate to https://calisti.app. Click on the “Sign up, It’s Free” button 
 
 Extract the smm binary and copy to the system path
 ```bash
-tar -xvf /home/ubuntu/lab/software/smm/smm_1.10.0_linux_amd64.tar.gz
+tar -xvf $HOME/lab/software/smm/smm_1.10.0_linux_amd64.tar.gz
 sudo cp ./smm /usr/bin
 ```
 
@@ -75,7 +75,7 @@ Please copy and paste the activation credentials command provided on the downloa
 
 Install Calisti and expose dashboard (the installation will take around 5 min)
 ```bash
-smm --non-interactive install -a --additional-cp-settings /home/ubuntu/lab/config/smm/enable-dashboard-expose.yaml -c ~/.kube/demo1.kconf
+smm --non-interactive install -a --additional-cp-settings $HOME/lab/config/smm/enable-dashboard-expose.yaml -c ~/.kube/demo1.kconf
 ```
 
 After the installation finishes you can check the Calisti SMM cluster status:
@@ -122,7 +122,7 @@ Service Mesh Manager provides a dashboard interface that can be used to diagnose
 
 In order to be able to access the Calisti dashboard outside of the lab container we need to enable a reverse-proxy 
 ```bash
-/home/ubuntu/lab/config/smm/proxy.sh
+$HOME/lab/config/smm/proxy.sh
 ```
 
 For authenticating to the dashboard we will need an authentication token which is generated using the smm login command
